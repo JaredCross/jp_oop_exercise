@@ -27,13 +27,34 @@ Zoo.prototype.animals = [];
 
 Zoo.prototype.addAnimal = function (animal) {
   if(this.isOpen() === "Open") {
-    if(console.log(animal)) {
-      this.animals.push(animal);
-    } else {
-      return "Not an instance of animal";
+    for(var i = 0; i < this.animals.length; i ++) {
+      if(this.animals[i].name === animal.name && this.animals[i].kind === animal.kind) {
+         return "Sorry, that animal already lives here";
+       }
     }
+      if(animal.constructor.name === "Animal") {
+        this.animals.push(animal);
+        return "It's in the cage!";
+      } else {
+        return "Not an instance of animal";
+      }
   } else {
     return "Zoo is closed";
+  }
+};
+
+Zoo.prototype.removeAnimal = function (animal) {
+  if(this.isOpen() === "Open") {
+    for(var i = 0; i < this.animals.length; i ++) {
+      if(this.animals[i].name === animal.name && this.animals[i].kind === animal.kind) {
+          console.log(this.animals);
+          this.animals.splice(i , 1 );
+          console.log(this.animals);
+         return "I think you made me kill it =(";
+       }
+    }
+  } else {
+    return "Zoo no open";
   }
 };
 
