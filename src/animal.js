@@ -1,8 +1,11 @@
 function Animal(name, age, kind){
+  Animal.instances = [];
   this.name = name;
   this.kind = kind;
   this.age = age;
+  Animal.instances.push(this);
 }
+
 
 Animal.prototype.oink = function(){
   if(this.kind === 'Pig') {
